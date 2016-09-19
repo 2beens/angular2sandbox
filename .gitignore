@@ -1,4 +1,4 @@
 /typings
 /node_modules
 /app/**/*.js
-/app/**/*.map.js
+/app/**/*.js.map
