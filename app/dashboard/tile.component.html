@@ -1,0 +1,13 @@
+<div class="col-lg-3" (click)="onClick()" style="cursor: pointer ">
+    <div class="ibox float-e-margins ">
+        <div class="ibox-title ">
+            <span class="label label-{{stats.badgeColor}} pull-right ">{{stats.badge}}</span>
+            <h5>{{stats.caption}}</h5>
+        </div>
+        <div class="ibox-content ">
+            <h1 class="no-margins ">{{stats.counter | number}}</h1>
+            <div class="stat-percent font-bold text-success ">{{stats.percentage | percent}} <i class="fa fa-bolt "></i></div>
+            <small>{{stats.subCaption}}</small>
+        </div>
+    </div>
+</div>
