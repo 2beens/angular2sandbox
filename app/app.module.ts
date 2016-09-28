@@ -11,6 +11,7 @@ import { ContentComponent} from './content.component';
 import { AppRoutingModule, routedComponents } from './app.routing'; //TODO: Create app.routing
 import { DialogsService } from './shared/dialogs.service';
 import { TileComponent } from './dashboard/tile.component';
+import { TodoFormComponent } from './todos/todo-form.component';
  
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import { TileComponent } from './dashboard/tile.component';
         HeaderComponent, 
         ContentComponent, 
         TileComponent,
+        TodoFormComponent,
         routedComponents 
     ],
     providers: [ 
