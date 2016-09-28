@@ -11,9 +11,9 @@ export class DashboardComponent implements OnInit {
     
     stats: Statistics[] = [];
 
-    constructor(private _dialogs: DialogsService) { 
+    constructor(private dialogsService: DialogsService) { 
         this.stats = [
-            new Statistics("Income", "Weekly", 10000, "New inocome", 0.93, "success"),
+            new Statistics("Income", "Weekly", 14400, "New inocome", 0.93, "success"),
             new Statistics("Income", "Weekly", 10000, "New inocome", 0.93, "danger"),
             new Statistics("Income", "Weekly", 10000, "New inocome", 0.93, "default"),
             new Statistics("Income", "Weekly", 10000, "New inocome", 0.93, "warning"),
@@ -26,6 +26,6 @@ export class DashboardComponent implements OnInit {
     }
 
     onTileClicked(stat: Statistics) {
-        this._dialogs.showError(stat.caption);
+        this.dialogsService.showError(stat.caption);
     }
 }

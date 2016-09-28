@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'oso-content',
-    templateUrl: 'content.component.html'
+    templateUrl: 'todos.component.html'
 })
-export class ContentComponent implements OnInit {
+export class TodosComponent implements OnInit {
     constructor() { }
+    
+    heroName: string = 'Mr. IQ';
 
     ngOnInit() { }
 }

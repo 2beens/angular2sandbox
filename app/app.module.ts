@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule  } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent} from './sidebar.component';
@@ -17,10 +17,20 @@ import { TileComponent } from './dashboard/tile.component';
         BrowserModule,
         HttpModule,
         RouterModule,
-        AppRoutingModule
+        AppRoutingModule,
+        FormsModule
     ],
-    declarations: [AppComponent, SidebarComponent, HeaderComponent, ContentComponent, routedComponents, TileComponent],
-    providers: [ DialogsService ],
-    bootstrap: [AppComponent],
+    declarations: [
+        AppComponent, 
+        SidebarComponent, 
+        HeaderComponent, 
+        ContentComponent, 
+        TileComponent,
+        routedComponents 
+    ],
+    providers: [ 
+        DialogsService 
+    ],
+    bootstrap: [ AppComponent ],
 })
 export class AppModule { }

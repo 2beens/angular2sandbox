@@ -2,9 +2,22 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TodosComponent } from './todos/todos.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+    { 
+        path: 'dashboard', 
+        component: DashboardComponent 
+    },
+    {
+        path: 'todos',
+        component: TodosComponent
+    },
+    {
+        path: '',
+        redirectTo: '/dashboard',
+        pathMatch: 'full'
+    }
 ];
 
 @NgModule({
@@ -13,4 +26,7 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routedComponents = [DashboardComponent];
+export const routedComponents = [
+    DashboardComponent,
+    TodosComponent
+  ];
