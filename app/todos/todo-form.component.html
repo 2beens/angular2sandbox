@@ -1,27 +1,57 @@
 <div class="row">
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <div [hidden]="submitted" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
         <h1>New Todo</h1>
-        <form>
+        <form *ngIf="active" (ngSubmit)="onSubmit()" #todoForm="ngForm">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input [(ngModel)]="model.title" type="text" class="form-control" id="title" name="title" required placeholder="Title...">
+                <input [(ngModel)]="model.title" #titleSpy="ngModel" type="text" class="form-control" id="title" name="title" required placeholder="Title...">
+                <div [hidden]="titleSpy.valid || titleSpy.pristine" class="alert alert-danger">
+                    Title is required
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="todoText">Text</label>
-                <textarea [(ngModel)]="model.text" class="form-control" id="todoText" name="todoText" rows="3" cols="30" placeholder="Todo text..." style="resize: none"></textarea>
+                <textarea [(ngModel)]="model.text" class="form-control" id="todoText" name="todoText" rows="3" cols="30" placeholder="Todo text..."
+                    style="resize: none"></textarea>
             </div>
 
             <div class="form-group">
                 <label for="priority">Priority</label>
-                <select [(ngModel)]="model.priority" class="form-control" id="priority" name="priority"  required>
+                <select [(ngModel)]="model.priority" class="form-control" id="priority" name="priority" required>
                     <option *ngFor="let p of priorities" [value]="p">{{p}}</option>
                 </select>
             </div>
 
-            <button class="btn btn-primary dim" type="submit">
+            <button class="btn btn-primary dim" type="submit" [disabled]="!todoForm.form.valid">
                 <i class="fa fa-plus-square"></i>
+            </button>
+
+            <button class="btn btn-primary dim" type="button" (click)="newTodo()">
+                <i class="fa fa-times-circle" aria-hidden="true"></i>
             </button>
         </form>
     </div>
+
+    <div [hidden]="!submitted">
+        <h2>You submitted the following:</h2>
+        <div class="row">
+            <div class="col-xs-3">Title</div>
+            <div class="col-xs-9  pull-left">{{ model.title }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3">Text</div>
+            <div class="col-xs-9 pull-left">{{ model.text }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3">Priority</div>
+            <div class="col-xs-9 pull-left">{{ model.priority }}</div>
+        </div>
+        
+        <br>
+        <button class="btn btn-default" (click)="submitted=false">Edit</button>
+    </div>
+
 </div>

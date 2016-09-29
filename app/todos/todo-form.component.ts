@@ -10,11 +10,22 @@ import { Todo } from '../models/todos/todo';
 export class TodoFormComponent  {
     priorities = ['High', 'Normal', 'Low'];
 
-    model = new Todo('', '', 'Normal');
+    model = this.initializeTodoModel();
 
     submitted = false;
 
     onSubmit() { 
         this.submitted = true; 
+    }
+
+    active = true;
+    newTodo() {
+        this.model = this.initializeTodoModel();
+        this.active = false;
+        setTimeout(() => this.active = true, 0);
+    }
+
+    initializeTodoModel(): Todo {
+        return new Todo('', '', 'Normal');
     }
 }

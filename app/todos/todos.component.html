@@ -1,3 +1,9 @@
 <div class="container">       
     <todo-form></todo-form>
+
+    <div class="todo-list">
+        <h4 *ngFor="let todo of todos">
+            {{ todo.title }}
+        </h4>
+    </div>
 </div>
