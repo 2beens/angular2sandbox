@@ -8,10 +8,11 @@ import { AppComponent } from './app.component';
 import { SidebarComponent} from './sidebar.component';
 import { HeaderComponent} from './header.component';
 import { ContentComponent} from './content.component';
-import { AppRoutingModule, routedComponents } from './app.routing'; //TODO: Create app.routing
+import { AppRoutingModule, routedComponents } from './app.routing';
 import { DialogsService } from './shared/dialogs.service';
 import { TileComponent } from './dashboard/tile.component';
 import { TodoFormComponent } from './todos/todo-form.component';
+import { TodoTileComponent } from './todos/todo-tile.component';
  
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import { TodoFormComponent } from './todos/todo-form.component';
         ContentComponent, 
         TileComponent,
         TodoFormComponent,
-        routedComponents 
+        TodoTileComponent,
+        routedComponents
     ],
     providers: [ 
         DialogsService 

@@ -2,8 +2,6 @@
     <todo-form></todo-form>
 
     <div class="todo-list">
-        <h4 *ngFor="let todo of todos">
-            {{ todo.title }}
-        </h4>
+        <todo-tile *ngFor="let t of todos" [todo]="t"></todo-tile>
     </div>
 </div>

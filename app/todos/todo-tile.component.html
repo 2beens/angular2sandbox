@@ -1,0 +1,11 @@
+<div class="col-lg-3" (click)="onClick()" style="cursor: pointer ">
+    <div class="ibox float-e-margins ">
+        <div class="ibox-title ">
+            <span class="label label-{{ todo.priorityColor }} pull-right ">{{ todo.priority }}</span>
+            <h5>{{ todo.title }}</h5>
+        </div>
+        <div class="ibox-content ">
+            <p>{{ todo.text }}</p>
+        </div>
+    </div>
+</div>
