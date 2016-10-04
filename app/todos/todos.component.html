@@ -1,7 +1,8 @@
 <div class="container">       
     <todo-form></todo-form>
 
-    <div class="todo-list">
-        <todo-tile *ngFor="let t of todos" [todo]="t"></todo-tile>
+    <hr />
+    <div class="row todo-list">
+        <todo-tile *ngFor="let t of todos" (clicked)="onTodoTileClicked($event)" [todo]="t"></todo-tile>
     </div>
 </div>
