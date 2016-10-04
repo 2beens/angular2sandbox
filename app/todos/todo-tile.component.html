@@ -1,11 +1,13 @@
-<div class="col-lg-3" (click)="onClick()" style="cursor: pointer ">
-    <div class="ibox float-e-margins ">
-        <div class="ibox-title ">
-            <span class="label label-{{ todo.priorityColor }} pull-right ">{{ todo.priority }}</span>
-            <h5>{{ todo.title }}</h5>
+<div class="col-lg-3">
+    <div class="panel panel-{{ todo.priorityColor }}">
+        <div class="panel-heading" (click)="onClick()" style="cursor: pointer">
+            {{ todo.title }}
         </div>
-        <div class="ibox-content ">
+        <div class="panel-body">
             <p>{{ todo.text }}</p>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-info btn-circle col-md-offset-10" (click)="onTodoFinished()" type="button"><i class="fa fa-check"></i></button>
         </div>
     </div>
 </div>

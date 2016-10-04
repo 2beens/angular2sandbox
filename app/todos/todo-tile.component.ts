@@ -6,13 +6,14 @@ import { Todo } from '../models/todos/todo';
     moduleId: module.id,
     selector: 'todo-tile',
     templateUrl: `todo-tile.component.html`,
-    outputs: ["clicked"]
+    outputs: ['clicked', 'finished']
 })
 export class TodoTileComponent implements OnInit {
     @Input()
     todo: Todo;
 
     clicked: EventEmitter<Todo> = new EventEmitter();
+    finished: EventEmitter<Todo> = new EventEmitter();
 
     constructor() { }
 
@@ -20,5 +21,9 @@ export class TodoTileComponent implements OnInit {
 
     onClick() {
         this.clicked.emit(this.todo);
+    }
+
+    onTodoFinished() {
+        this.finished.emit(this.todo);
     }
 }

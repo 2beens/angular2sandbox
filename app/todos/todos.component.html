@@ -1,8 +1,24 @@
 <div class="container">       
-    <todo-form></todo-form>
+    <todo-form (todoCreated)="newTodoCreated($event)"></todo-form>
 
-    <hr />
+    <div class="ibox">
+        <div class="ibox-content">
+            <h5>Completed Todos</h5>
+            <h2>65%</h2>
+            <div class="progress progress-mini">
+                <div style="width: 68%;" class="progress-bar"></div>
+            </div>
+
+            <div class="m-t-sm small">3 todo tasks left undone.</div>
+        </div>
+    </div>
+    
     <div class="row todo-list">
-        <todo-tile *ngFor="let t of todos" (clicked)="onTodoTileClicked($event)" [todo]="t"></todo-tile>
+        <todo-tile 
+            *ngFor="let t of todos"
+            [todo]="t" 
+            (clicked)="onTodoTileClicked($event)"
+            (finished)="onTodoFinished($event)">
+        </todo-tile>
     </div>
 </div>

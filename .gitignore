@@ -3,3 +3,4 @@
 /app/**/*.js
 /app/**/*.js.map
 *.log.*
+.vscode/

@@ -1,21 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 
 import { Todo } from '../models/todos/todo';
 
 @Component({
     moduleId: module.id,
     selector: 'todo-form',
-    templateUrl: 'todo-form.component.html'
+    templateUrl: 'todo-form.component.html',
+    outputs: ['todoCreated']
 })
 export class TodoFormComponent  {
+    todoCreated: EventEmitter<Todo> = new EventEmitter();
+
     priorities = ['High', 'Normal', 'Low'];
 
     model = this.initializeTodoModel();
 
     submitted = false;
-
     onSubmit() { 
-        this.submitted = true; 
+        this.submitted = true;
+        this.todoCreated.emit(this.model);
     }
 
     active = true;
