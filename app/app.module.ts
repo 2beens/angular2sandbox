@@ -11,9 +11,12 @@ import { ContentComponent} from './content.component';
 import { AppRoutingModule, routedComponents } from './app.routing';
 import { DialogsService } from './shared/dialogs.service';
 import { TileComponent } from './dashboard/tile.component';
+
+// TODOs ENTITIES  //////////////////////////////////////////////////
 import { TodoFormComponent } from './todos/todo-form.component';
 import { TodoTileComponent } from './todos/todo-tile.component';
- 
+import { TodoService } from './todos/services/todo.service';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -33,7 +36,8 @@ import { TodoTileComponent } from './todos/todo-tile.component';
         routedComponents
     ],
     providers: [ 
-        DialogsService 
+        DialogsService,
+        TodoService
     ],
     bootstrap: [ AppComponent ],
 })
