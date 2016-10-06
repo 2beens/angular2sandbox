@@ -11,13 +11,17 @@ import { Todo } from '../models/todos/todo';
 export class TodoTileComponent implements OnInit {
     @Input()
     todo: Todo;
+    shortenedText: string;
 
     clicked: EventEmitter<Todo> = new EventEmitter();
     finished: EventEmitter<Todo> = new EventEmitter();
 
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.shortenedText = this.todo.text.length > 55 ? 
+            (this.todo.text.substring(0, 55) + ' . . .') : this.todo.text;
+    }
 
     onClick() {
         this.clicked.emit(this.todo);

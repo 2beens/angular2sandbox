@@ -19,7 +19,7 @@ export class TodosComponent implements OnInit {
     ngOnInit() { }
 
     onTodoTileClicked(todo: Todo) {
-        this.dialogsService.showInfo(todo.title);
+        this.dialogsService.showInfo(todo.title, todo.text);
     }
 
     onTodoFinished(todo: Todo) {
@@ -28,11 +28,11 @@ export class TodosComponent implements OnInit {
             this.todos.splice(todoIndex, 1);
         }
 
-        this.dialogsService.showInfo('Todo finished: ' + todo.title);
+        this.dialogsService.showInfo('Info', 'Todo finished: ' + todo.title);
     }
 
     newTodoCreated(todo: Todo) {
         this.todos.push(todo);
-        this.dialogsService.showInfo('New todo created: ' + todo.title);
+        this.dialogsService.showInfo('Info', 'New todo created: ' + todo.title);
     }
 }

@@ -8,8 +8,8 @@ export class DialogsService {
 
     constructor() { }
 
-    showInfo(message: string) {
-        swal("Ops", message, "info");
+    showInfo(title: string, message: string) {
+        swal(title, message, "info");
     }
 
     showError(message: string) {

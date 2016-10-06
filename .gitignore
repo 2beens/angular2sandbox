@@ -4,3 +4,4 @@
 /app/**/*.js.map
 *.log.*
 .vscode/
+npm-debug.log
