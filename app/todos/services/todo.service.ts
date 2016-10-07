@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Todo } from '../../models/todos/todo';
@@ -9,18 +9,29 @@ export class TodoService {
     todos: Todo[] = [];
     finishedTodos: Todo[] = [];
 
-    //TODO: put those two in a shared config
+    //TODO: put those things in a shared config
+    private headers = new Headers({'Content-Type': 'application/json'});
     private todosServerBaseUrl = 'http://localhost:3100';
     private todosServerPath = '/todos';
+    private todosUrl = this.todosServerBaseUrl + this.todosServerPath;
 
     constructor(private http: Http) { }
 
      getTodos(): Promise<Todo[]> {
-         return this.http.get(this.todosServerBaseUrl + this.todosServerPath)
+         return this.http.get(this.todosUrl)
             .toPromise()
             .then(response => response.json() as Todo[])
             .catch(this.handleError);
      }
+
+     //saveTodo(todo: Todo): Promise
+     saveTodo(todo: Todo): Promise<Todo> {
+        return this.http
+            .post(this.todosUrl, JSON.stringify(todo), {headers: this.headers})
+            .toPromise()
+            .then(res => res.json())
+            .catch(this.handleError);
+    }
 
      getFinishedTodos() {
 

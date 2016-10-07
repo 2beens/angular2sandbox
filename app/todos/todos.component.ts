@@ -34,7 +34,11 @@ export class TodosComponent implements OnInit {
     }
 
     newTodoCreated(todo: Todo) {
-        this.todos.push(todo);
-        this.dialogsService.showInfo('Info', 'New todo created: ' + todo.title);
+        this.todoService.saveTodo(todo)
+            .then(todo => {
+                this.todos.push(todo);
+                this.dialogsService.showInfo
+                    ('Info', 'New todo created: ' + todo.title + ', id: ' + todo.id);
+            });
     }
 }

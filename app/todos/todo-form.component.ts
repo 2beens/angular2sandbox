@@ -29,6 +29,6 @@ export class TodoFormComponent  {
     }
 
     initializeTodoModel(): Todo {
-        return new Todo('', '', 'Normal', 'success');
+        return new Todo(0, '', '', 'Normal', 'success');
     }
 }

@@ -21,6 +21,12 @@ export class TodoTileComponent implements OnInit {
     ngOnInit() {
         this.shortenedText = this.todo.text.length > 55 ? 
             (this.todo.text.substring(0, 55) + ' . . .') : this.todo.text;
+        if(this.todo.priority === 'High')
+            this.todo.priorityColor = 'danger';
+        else if(this.todo.priority === 'Low')
+            this.todo.priorityColor = 'primary';
+        else
+            this.todo.priorityColor = 'warning';
     }
 
     onClick() {
