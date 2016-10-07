@@ -13,7 +13,9 @@ export class TodosComponent implements OnInit {
     todos: Todo[] = [];
 
     constructor(private dialogsService: DialogsService, private todoService: TodoService) {
-        this.todos = todoService.getTodos();
+        todoService
+            .getTodos()
+            .then(todos => this.todos = todos);
      }
 
     ngOnInit() { }
