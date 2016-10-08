@@ -10,6 +10,7 @@ import { HeaderComponent} from './header.component';
 import { ContentComponent} from './content.component';
 import { AppRoutingModule, routedComponents } from './app.routing';
 import { DialogsService } from './shared/dialogs.service';
+import { ConfigService } from './shared/config.service';
 import { TileComponent } from './dashboard/tile.component';
 
 // TODOs ENTITIES  //////////////////////////////////////////////////
@@ -37,6 +38,7 @@ import { TodoService } from './todos/services/todo.service';
     ],
     providers: [ 
         DialogsService,
+        ConfigService,
         TodoService
     ],
     bootstrap: [ AppComponent ],

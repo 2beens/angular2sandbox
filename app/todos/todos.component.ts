@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DialogsService } from '../shared/dialogs.service';
+import { ConfigService } from '../shared/config.service';
 import { TodoService } from './services/todo.service';
 import { Todo } from '../models/todos/todo';
 
@@ -12,13 +13,18 @@ export class TodosComponent implements OnInit {
 
     todos: Todo[] = [];
 
-    constructor(private dialogsService: DialogsService, private todoService: TodoService) {
+    constructor(
+        private dialogsService: DialogsService, 
+        private todoService: TodoService,
+        private configService: ConfigService) {
         todoService
             .getTodos()
             .then(todos => this.todos = todos);
      }
 
-    ngOnInit() { }
+    ngOnInit() {
+        
+    }
 
     onTodoTileClicked(todo: Todo) {
         this.dialogsService.showInfo(todo.title, todo.text);
