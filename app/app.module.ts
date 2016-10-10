@@ -39,8 +39,12 @@ import { TodoService } from './todos/services/todo.service';
     providers: [ 
         DialogsService,
         ConfigService,
-        TodoService
+        TodoService        
     ],
     bootstrap: [ AppComponent ],
 })
-export class AppModule { }
+export class AppModule {
+    constructor(private configService: ConfigService) {
+        this.configService.load();
+    }
+}

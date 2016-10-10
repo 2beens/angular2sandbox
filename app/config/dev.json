@@ -1,4 +1,6 @@
 {
-    "key1": "val1",
-    "key2": "val2"
+    "_description": "environment specific data",
+    "todosServerBaseUrl": "http://localhost:3100",
+    "todosServerPath": "/todos",
+    "debugging": true
 }
