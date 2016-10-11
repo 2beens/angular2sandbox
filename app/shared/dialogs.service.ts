@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import 'node_modules/sweetalert/dist/sweetalert.min.js'
+import 'node_modules/sweetalert/dist/sweetalert.min.js';
 
 //declare var swal: any;
 

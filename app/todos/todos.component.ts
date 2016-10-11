@@ -5,6 +5,8 @@ import { ConfigService } from '../shared/config.service';
 import { TodoService } from './services/todo.service';
 import { Todo } from '../models/todos/todo';
 
+import 'node_modules/sweetalert/dist/sweetalert.min.js';
+
 @Component({
     moduleId: module.id,
     templateUrl: 'todos.component.html'
@@ -19,7 +21,11 @@ export class TodosComponent implements OnInit {
         private configService: ConfigService) {
         todoService
             .getTodos()
-            .then(todos => this.todos = todos);
+            .then(todos => {
+                this.todos = todos.filter(function(todo) {
+                    return !todo.isFinished;
+                });
+            });
      }
 
     ngOnInit() {
@@ -31,12 +37,34 @@ export class TodosComponent implements OnInit {
     }
 
     onTodoFinished(todo: Todo) {
-        var todoIndex = this.todos.indexOf(todo, 0);
-        if (todoIndex > -1) {
-            this.todos.splice(todoIndex, 1);
-        }
+        let self = this;
 
-        this.dialogsService.showInfo('Info', 'Todo finished: ' + todo.title);
+        swal({
+            title: "Are you sure?",   
+            text: "You will be able to return this Todo into 'standby' state!",   
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Yes, clear it!",   
+            cancelButtonText: "No, cancel plx!",   
+            closeOnConfirm: false,   
+            closeOnCancel: false 
+        }, function(isConfirm) {
+            if (isConfirm) {
+                var todoIndex = self.todos.indexOf(todo, 0);
+                if (todoIndex > -1) {
+                    self.todos.splice(todoIndex, 1);
+                }
+
+                todo.isFinished = true;
+                todo.finishedAt = Date.now();
+                self.todoService.updateTodo(todo);
+                
+                swal("Finished!", "Your todo has been marked as finished.", "success");   
+            } else {     
+                swal("Cancelled", "Your todo is left unfinished.", "error");   
+            }
+        });
     }
 
     newTodoCreated(todo: Todo) {

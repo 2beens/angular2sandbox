@@ -26,7 +26,15 @@ export class TodoService {
 
      saveTodo(todo: Todo): Promise<Todo> {
         return this.http
-            .post(this.todosUrl, JSON.stringify(todo), {headers: this.headers})
+            .post(this.todosUrl, JSON.stringify(todo), { headers: this.headers })
+            .toPromise()
+            .then(res => res.json())
+            .catch(this.handleError);
+    }
+
+    updateTodo(todo: Todo): Promise<Todo> {
+        return this.http
+            .put(this.todosUrl, JSON.stringify(todo), { headers: this.headers })
             .toPromise()
             .then(res => res.json())
             .catch(this.handleError);
