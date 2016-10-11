@@ -4,12 +4,12 @@
     <div class="ibox">
         <div class="ibox-content">
             <h5>Completed Todos</h5>
-            <h2>65%</h2>
+            <h2>{{ clearedTodosPercentage }}</h2>
             <div class="progress progress-mini">
-                <div style="width: 68%;" class="progress-bar"></div>
+                <div [style.width]="clearedTodosPercentage" class="progress-bar"></div>
             </div>
 
-            <div class="m-t-sm small">3 todo tasks left undone.</div>
+            <div class="m-t-sm small">{{ todos.length }} / {{ allTodosCount }} todo tasks left undone.</div>
         </div>
     </div>
     

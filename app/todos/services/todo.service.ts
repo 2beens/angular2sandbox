@@ -7,9 +7,7 @@ import { Todo } from '../../models/todos/todo';
 
 @Injectable()
 export class TodoService {
-    todos: Todo[] = [];
-    finishedTodos: Todo[] = [];
-
+    
     private headers = new Headers({'Content-Type': 'application/json'});
     private todosUrl: string;
 
