@@ -1,6 +1,4 @@
 export class Todo {
-    public shortenedText: string;
-    
     constructor(
         public id: number,
         public title: string,

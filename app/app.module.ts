@@ -13,6 +13,8 @@ import { DialogsService } from './shared/dialogs.service';
 import { ConfigService } from './shared/config.service';
 import { TileComponent } from './dashboard/tile.component';
 
+import { ShorterPipe } from './pipes/shorter.pipe';
+
 // TODOs ENTITIES  //////////////////////////////////////////////////
 import { TodoFormComponent } from './todos/todo-form.component';
 import { TodosTableComponent } from './todos/todos-table.component';
@@ -36,6 +38,7 @@ import { TodoService } from './todos/services/todo.service';
         TodoFormComponent,
         TodosTableComponent,
         TodoTileComponent,
+        ShorterPipe,
         routedComponents
     ],
     providers: [ 
