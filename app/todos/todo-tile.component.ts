@@ -11,7 +11,6 @@ import { Todo } from '../models/todos/todo';
 export class TodoTileComponent implements OnInit {
     @Input()
     todo: Todo;
-    shortenedText: string;
 
     clicked: EventEmitter<Todo> = new EventEmitter();
     finished: EventEmitter<Todo> = new EventEmitter();
@@ -19,8 +18,6 @@ export class TodoTileComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        this.shortenedText = this.todo.text.length > 55 ? 
-            (this.todo.text.substring(0, 55) + ' . . .') : this.todo.text;
         if(this.todo.priority === 'High')
             this.todo.priorityColor = 'danger';
         else if(this.todo.priority === 'Low')

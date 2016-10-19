@@ -18,7 +18,15 @@ export class TodoService {
     getTodos(): Promise<Todo[]> {
         return this.http.get(this.todosUrl)
             .toPromise()
-            .then(response => response.json() as Todo[])
+            .then(response => {
+                let todos = response.json() as Todo[];
+                for(let todo of todos) {
+                    todo.shortenedText = todo.text.length > 55 ? 
+                        (todo.text.substring(0, 55) + ' . . .') : todo.text;
+                }
+
+                return todos;
+            })
             .catch(this.handleError);
     }
 

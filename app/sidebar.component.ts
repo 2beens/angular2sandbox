@@ -16,6 +16,6 @@ export class SidebarComponent implements OnInit {
         for (let navBarLink of sideBarMenu.children) {
             navBarLink.classList.remove('active'); 
         }
-        activeLink.classList.add("active");
+        activeLink.classList.add('active');
     }
 }

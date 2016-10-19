@@ -33,21 +33,21 @@
         </form>
     </div>
 
-    <div [hidden]="!submitted">
-        <h2>You submitted the following:</h2>
+    <div [hidden]="!submitted" style="margin-bottom: 20px;">
+        <h2>You've created the following todo:</h2>
         <div class="row">
             <div class="col-xs-3">Title</div>
-            <div class="col-xs-9  pull-left">{{ model.title }}</div>
+            <div class="col-xs-5  pull-left">{{ model.title }}</div>
         </div>
 
         <div class="row">
             <div class="col-xs-3">Text</div>
-            <div class="col-xs-9 pull-left">{{ model.text }}</div>
+            <div class="col-xs-5 pull-left">{{ model.text }}</div>
         </div>
 
         <div class="row">
             <div class="col-xs-3">Priority</div>
-            <div class="col-xs-9 pull-left">{{ model.priority }}</div>
+            <div class="col-xs-5 pull-left">{{ model.priority }}</div>
         </div>
         
         <br>

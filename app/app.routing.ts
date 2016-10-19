@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TodosComponent } from './todos/todos.component';
+import { AllTodosComponent } from './todos/all-todos.component';
 
 const routes: Routes = [
     { 
@@ -12,6 +13,10 @@ const routes: Routes = [
     {
         path: 'todos',
         component: TodosComponent
+    },
+    {
+        path: 'all-todos',
+        component: AllTodosComponent
     },
     {
         path: '',
@@ -28,5 +33,6 @@ export class AppRoutingModule { }
 
 export const routedComponents = [
     DashboardComponent,
-    TodosComponent
-  ];
+    TodosComponent,
+    AllTodosComponent
+];

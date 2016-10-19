@@ -4,7 +4,7 @@
             {{ todo.title }}
         </div>
         <div class="panel-body" (click)="onClick()" style="cursor: pointer">
-            <p>{{ shortenedText }}</p>
+            <p>{{ todo.shortenedText }}</p>
         </div>
         <div class="panel-footer">
             <button class="btn btn-primary col-md-offset-10" (click)="onTodoFinished()" type="button"><i class="fa fa-check"></i></button>

@@ -15,6 +15,7 @@ import { TileComponent } from './dashboard/tile.component';
 
 // TODOs ENTITIES  //////////////////////////////////////////////////
 import { TodoFormComponent } from './todos/todo-form.component';
+import { TodosTableComponent } from './todos/todos-table.component';
 import { TodoTileComponent } from './todos/todo-tile.component';
 import { TodoService } from './todos/services/todo.service';
 
@@ -33,6 +34,7 @@ import { TodoService } from './todos/services/todo.service';
         ContentComponent, 
         TileComponent,
         TodoFormComponent,
+        TodosTableComponent,
         TodoTileComponent,
         routedComponents
     ],
