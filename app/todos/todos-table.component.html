@@ -22,7 +22,7 @@
     <div class="ibox-content">
         <div class="row">
             <div class="col-sm-5 m-b-xs">
-                <select class="input-sm form-control input-s-sm inline">
+                <select (change)="onTodosTypeChange($event.target.value)" class="input-sm form-control input-s-sm inline">
                     <option value="0">All</option>
                     <option value="1">Completed</option>
                     <option value="2">Uncompleted</option>
@@ -58,17 +58,21 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let todo of todos">
-                        <td>
-                            <div class="icheckbox_square-green checked" style="position: relative;"><input type="checkbox" checked="" class="i-checks" name="input[]" style="position: absolute; opacity: 0;">
-                                <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                            </div>
-                        </td>
-                        <td>{{ todo.title }}</td>
-                        <td>{{ todo.shortenedText }}</td>
-                        <td>{{ todo.createdAt | date }}</td>
-                        <td *ngIf="todo.isFinished === true"><i class="fa fa-check text-navy"></i></td>
-                        <td *ngIf="todo.isFinished === false"><i class="fa fa-ban text-navy"></i></td>
-                        <td><span class="label label-{{ todo.priorityColor }}">{{ todo.priority }}</span></td>
+                        <template [ngIf]="todosType === '0' || 
+                                (todosType === '1' && todo.isFinished === true) ||
+                                (todosType === '2' && todo.isFinished === false)">
+                            <td>
+                                <div class="icheckbox_square-green checked" style="position: relative;"><input type="checkbox" checked="" class="i-checks" name="input[]" style="position: absolute; opacity: 0;">
+                                    <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                                </div>
+                            </td>
+                            <td>{{ todo.title }}</td>
+                            <td>{{ todo.shortenedText }}</td>
+                            <td>{{ todo.createdAt | date }}</td>
+                            <td *ngIf="todo.isFinished === true"><i class="fa fa-check text-navy"></i></td>
+                            <td *ngIf="todo.isFinished === false"><i class="fa fa-ban text-navy"></i></td>
+                            <td><span class="label label-{{ todo.priorityColor }}">{{ todo.priority }}</span></td>
+                        </template>
                     </tr>                    
                 </tbody>
             </table>

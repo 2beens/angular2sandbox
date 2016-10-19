@@ -12,7 +12,14 @@ export class TodosTableComponent implements OnInit {
     @Input()
     todos: Todo[];
 
+    todosType = '0';
+
     constructor() { }
 
     ngOnInit() { }
+
+    onTodosTypeChange(type) {
+        console.log(type);
+        this.todosType = type;
+    }
 }
