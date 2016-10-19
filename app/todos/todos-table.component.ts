@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Todo } from '../models/todos/todo';
+import { ToastrService } from '../shared/toastr.service';
 
 @Component({
     moduleId: module.id,
@@ -14,7 +15,9 @@ export class TodosTableComponent implements OnInit {
 
     todosType = '0';
 
-    constructor() { }
+    constructor(private toastr: ToastrService) { 
+        toastr.showSuccess();
+    }
 
     ngOnInit() { }
 

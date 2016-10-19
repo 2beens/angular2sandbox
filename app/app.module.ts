@@ -4,12 +4,15 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+
 import { AppComponent } from './app.component';
 import { SidebarComponent} from './sidebar.component';
 import { HeaderComponent} from './header.component';
 import { ContentComponent} from './content.component';
 import { AppRoutingModule, routedComponents } from './app.routing';
 import { DialogsService } from './shared/dialogs.service';
+import { ToastrService } from './shared/toastr.service';
 import { ConfigService } from './shared/config.service';
 import { TileComponent } from './dashboard/tile.component';
 
@@ -27,7 +30,8 @@ import { TodoService } from './todos/services/todo.service';
         HttpModule,
         RouterModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        ToastModule
     ],
     declarations: [
         AppComponent, 
@@ -43,8 +47,9 @@ import { TodoService } from './todos/services/todo.service';
     ],
     providers: [ 
         DialogsService,
+        ToastrService,
         ConfigService,
-        TodoService        
+        TodoService
     ],
     bootstrap: [ AppComponent ],
 })
