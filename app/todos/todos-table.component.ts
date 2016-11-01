@@ -35,4 +35,8 @@ export class TodosTableComponent implements OnInit {
     onTodosTypeChange(type) {
         this.todosType = type;
     }
+
+    searchTodos(searchText) {
+        this.toastr.showInfo('Search text: ' + searchText);
+    }
 }

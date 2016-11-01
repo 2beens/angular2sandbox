@@ -1,6 +1,6 @@
 <div class="ibox float-e-margins">
     <div class="ibox-title">
-        <h5>All Todos [<span *ngIf="todos" style="color: red">{{ todos.length }}</span>]</h5>
+        <h5>All Todos [<span *ngIf="_todos" style="color: red">{{ _todos.length }}</span>]</h5>
         <div class="ibox-tools">
             <a class="collapse-link">
                 <i class="fa fa-chevron-up"></i>
@@ -37,14 +37,14 @@
             </div>
             <div class="col-sm-3">
                 <div class="input-group">
-                    <input type="text" placeholder="Search" class="input-sm form-control"> 
+                    <input type="text" #searchTodosInput placeholder="Search" class="input-sm form-control"> 
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-sm btn-primary"> Go!</button> 
+                        <button type="button" (click)="searchTodos(searchTodosInput.value)" class="btn btn-sm btn-primary"> Go!</button> 
                     </span>
                 </div>
             </div>
         </div>
-        <div class="table-responsive">
+        <div *ngIf="_todos" class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -57,7 +57,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let todo of _todos">
+                    <tr *ngFor="let todo of (_todos | filterTodos: searchTodosInput.value)">
                         <template [ngIf]="todosType === '0' || 
                                 (todosType === '1' && todo.isFinished === true) ||
                                 (todosType === '2' && todo.isFinished === false)">
