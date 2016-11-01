@@ -17,14 +17,7 @@ export class TodoTileComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() {
-        if(this.todo.priority === 'High')
-            this.todo.priorityColor = 'danger';
-        else if(this.todo.priority === 'Low')
-            this.todo.priorityColor = 'primary';
-        else
-            this.todo.priorityColor = 'warning';
-    }
+    ngOnInit() { }
 
     onClick() {
         this.clicked.emit(this.todo);

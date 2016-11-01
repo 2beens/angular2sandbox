@@ -18,6 +18,13 @@ export class TodoFormComponent  {
     submitted = false;
     onSubmit() { 
         this.submitted = true;
+        if(this.model.priority === 'High')
+            this.model.priorityColor = 'danger';
+        else if(this.model.priority === 'Normal')
+            this.model.priorityColor = 'success';
+        else
+            this.model.priorityColor = 'primary';
+
         this.todoCreated.emit(this.model);
     }
 
