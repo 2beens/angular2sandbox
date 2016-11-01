@@ -7,27 +7,23 @@ export class ToastrService {
     
     constructor(public toastr: ToastsManager) { }
 
-    popMessage(message: string) {
-        
+    showSuccess(message: string) {
+        this.toastr.success(message, 'Success!');
     }
 
-    showSuccess() {
-        this.toastr.success('You are awesome!', 'Success!');
+    showError(message: string) {
+        this.toastr.error(message, 'Oops!');
     }
 
-    showError() {
-        this.toastr.error('This is not good!', 'Oops!');
+    showWarning(message: string) {
+        this.toastr.warning(message, 'Alert!');
     }
 
-    showWarning() {
-        this.toastr.warning('You are being warned.', 'Alert!');
-    }
-
-    showInfo() {
-        this.toastr.info('Just some information for you.');
+    showInfo(message: string) {
+        this.toastr.info(message);
     }
     
-    showCustom() {
-        this.toastr.custom('<span style="color: red">Message in red.</span>', null, {enableHTML: true});
+    showCustom(message: string) {
+        this.toastr.custom('<span style="color: red">' + message + '</span>', null, { enableHTML: true });
     }
 }

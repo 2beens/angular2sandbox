@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 
 import { ConfigService } from '../shared/config.service';
 import { TodoService } from './services/todo.service';

@@ -11,18 +11,28 @@ import { ToastrService } from '../shared/toastr.service';
 export class TodosTableComponent implements OnInit {
 
     @Input()
-    todos: Todo[];
+    _todos: Todo[];
 
-    todosType = '0';
-
-    constructor(private toastr: ToastrService) { 
-        toastr.showSuccess();
+    @Input()
+    set todos(todos: Todo[]) {
+        this._todos = todos;
+        if(this._todos !== null && this._todos !== undefined) {
+            setTimeout(() => {
+                this.toastr.showSuccess('[' + this._todos.length + '] todos loaded.');    
+            }, 400);
+        }
     }
 
-    ngOnInit() { }
+    // all, completed, uncompleted
+    todosType = '0';
+    
+    constructor(private toastr: ToastrService) { }
+
+    ngOnInit() {
+        this.toastr.showInfo('Loading all todos...');
+    }
 
     onTodosTypeChange(type) {
-        console.log(type);
         this.todosType = type;
     }
 }
