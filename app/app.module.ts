@@ -16,7 +16,8 @@ import { ToastrService } from './shared/toastr.service';
 import { ConfigService } from './shared/config.service';
 import { TileComponent } from './dashboard/tile.component';
 
-import { FilterTodosPipe } from './pipes/filter-todos.pipe';
+import { FilterTodosByDatePipe } from './pipes/filter-todos-by-date.pipe';
+import { FilterTodosByTitlePipe } from './pipes/filter-todos-by-title.pipe';
 import { ShorterPipe } from './pipes/shorter.pipe';
 
 // TODOs ENTITIES  //////////////////////////////////////////////////
@@ -43,7 +44,8 @@ import { TodoService } from './todos/services/todo.service';
         TodoFormComponent,
         TodosTableComponent,
         TodoTileComponent,
-        FilterTodosPipe,
+        FilterTodosByDatePipe,
+        FilterTodosByTitlePipe,
         ShorterPipe,
         routedComponents
     ],

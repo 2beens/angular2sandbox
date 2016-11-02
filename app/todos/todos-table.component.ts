@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { TimeSpanType } from '../models/timeSpanType';
 import { Todo } from '../models/todos/todo';
 import { ToastrService } from '../shared/toastr.service';
 
@@ -25,6 +26,8 @@ export class TodosTableComponent implements OnInit {
 
     // all, completed, uncompleted
     todosType = '0';
+    //all, day, week, month
+    timeSpanType = TimeSpanType.Week;
     
     constructor(private toastr: ToastrService) { }
 
@@ -36,7 +39,15 @@ export class TodosTableComponent implements OnInit {
         this.todosType = type;
     }
 
+    onTimeSpanTypeChange(type) {
+        this.timeSpanType = type;
+    }
+
     searchTodos(searchText) {
-        this.toastr.showInfo('Search text: ' + searchText);
+        if(searchText.length === 0) {
+            this.toastr.showInfo('Clear search.');    
+        } else {
+            this.toastr.showInfo('Search text: ' + searchText);
+        }
     }
 }

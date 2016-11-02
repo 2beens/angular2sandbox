@@ -30,9 +30,10 @@
             </div>
             <div class="col-sm-4 m-b-xs">
                 <div data-toggle="buttons" class="btn-group">
-                    <label class="btn btn-sm btn-white"> <input type="radio" id="option1" name="options"> Day </label>
-                    <label class="btn btn-sm btn-white active"> <input type="radio" id="option2" name="options"> Week </label>
-                    <label class="btn btn-sm btn-white"> <input type="radio" id="option3" name="options"> Month </label>
+                    <label (click)="onTimeSpanTypeChange(2)" class="btn btn-sm btn-white"> <input type="radio" id="option1" name="options"> Day </label>
+                    <label (click)="onTimeSpanTypeChange(3)" class="btn btn-sm btn-white active"> <input type="radio" id="option2" name="options"> Week </label>
+                    <label (click)="onTimeSpanTypeChange(4)" class="btn btn-sm btn-white"> <input type="radio" id="option3" name="options"> Month </label>
+                    <label (click)="onTimeSpanTypeChange(1)" class="btn btn-sm btn-info"> <input type="radio" id="option4" name="options"> All Time </label>
                 </div>
             </div>
             <div class="col-sm-3">
@@ -57,7 +58,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let todo of (_todos | filterTodos: searchTodosInput.value)">
+                    <tr *ngFor="let todo of (_todos | filterTodosByTitle: searchTodosInput.value | filterTodosByDate: timeSpanType)">
                         <template [ngIf]="todosType === '0' || 
                                 (todosType === '1' && todo.isFinished === true) ||
                                 (todosType === '2' && todo.isFinished === false)">
